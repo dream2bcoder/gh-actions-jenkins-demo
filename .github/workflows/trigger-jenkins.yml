@@ -17,3 +17,4 @@ jobs:
           webhook_auth: ${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}
           webhook_auth_type: 'basic'
           webhook_type: 'jenkins'
+          verify_ssl: false
