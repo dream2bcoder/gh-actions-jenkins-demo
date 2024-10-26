@@ -1,0 +1,19 @@
+name: Trigger Jenkins Build
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  trigger-jenkins:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Jenkins build
+        uses: distributhor/workflow-webhook@v3
+        with:
+          url: ${{ secrets.JENKINS_URL }}/job/your-job-name/build
+          method: POST
+          username: ${{ secrets.JENKINS_USER }}
+          password: ${{ secrets.JENKINS_API_TOKEN }}
