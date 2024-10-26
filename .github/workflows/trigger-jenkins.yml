@@ -13,7 +13,7 @@ jobs:
       - name: Trigger Jenkins build
         uses: distributhor/workflow-webhook@v3
         with:
-          url: ${{ secrets.JENKINS_URL }}/job/hello-world/build
-          method: POST
-          username: ${{ secrets.JENKINS_USER }}
-          password: ${{ secrets.JENKINS_API_TOKEN }}
+          webhook_url: ${{ secrets.JENKINS_URL }}/job/hello-world/build
+          webhook_auth: ${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}
+          webhook_auth_type: 'basic'
+          webhook_type: 'jenkins'
